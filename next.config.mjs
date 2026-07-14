@@ -61,9 +61,9 @@ export default {
     // Une image optimisée est mise en cache sur disque pendant 1 an : sharp ne
     // s'exécute qu'UNE fois par image/variante, pas à chaque visite (ni pour chaque bot).
     minimumCacheTTL: 31536000,
-    // Moins de points de rupture = moins de variantes générées = moins d'appels sharp.
-    deviceSizes: [640, 828, 1200, 1920, 2560],
-    imageSizes: [128, 256, 384],
+    // NB : on garde les deviceSizes/imageSizes par défaut de Next. Les restreindre
+    // fait renvoyer un 400 dès qu'une largeur non listée est demandée (vieux HTML
+    // en cache, CDN, etc.) — trop fragile pour un gain marginal.
     remotePatterns: [
       {
         protocol: "https",
