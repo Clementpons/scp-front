@@ -57,6 +57,7 @@
     "react-slick": "^0.30.2",
     "react-world-flags": "^1.6.0",
     "sanity": "^3.58.0",
+    "sharp": "^0.35.3",
     "sitemap": "^8.0.0",
     "slick-carousel": "^1.8.1",
     "stripe": "^18.5.0",
