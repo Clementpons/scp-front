@@ -55,6 +55,15 @@ export default {
     ]
   },
   images: {
+    // WebP uniquement : l'encodage AVIF par sharp est très gourmand en CPU/threads
+    // et fait grimper le nombre de process sur l'hébergement partagé.
+    formats: ["image/webp"],
+    // Une image optimisée est mise en cache sur disque pendant 1 an : sharp ne
+    // s'exécute qu'UNE fois par image/variante, pas à chaque visite (ni pour chaque bot).
+    minimumCacheTTL: 31536000,
+    // Moins de points de rupture = moins de variantes générées = moins d'appels sharp.
+    deviceSizes: [640, 828, 1200, 1920, 2560],
+    imageSizes: [128, 256, 384],
     remotePatterns: [
       {
         protocol: "https",

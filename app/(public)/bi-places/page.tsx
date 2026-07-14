@@ -35,7 +35,7 @@ export default function NosStagesPage() {
       <section>
         <div className="bg-slate-900 h-[80svh] overflow-hidden relative flex items-end pb-24 md:pb-16 px-4 lg:px-36 xl:px-48">
           <Image
-            src="/baptemes/photo-illustration-bapteme-bi_places.png"
+            src="/baptemes/photo-illustration-bapteme-bi_places.webp"
             alt="Vol en parapente au dessus de la Valée de Serre Chevalier Briançon"
             width={1920}
             height={1080}
@@ -136,7 +136,7 @@ export default function NosStagesPage() {
           className="inline-block lg:w-1/2 h-[40vh] xl:h-[50vh] rounded-lg overflow-hidden"
         >
           <Image
-            src="/baptemes/bapteme-biplace-aventure.png"
+            src="/baptemes/bapteme-biplace-aventure.webp"
             alt={`Photo d&apos;un vol en parapente à Serre Chevalier`}
             width={1920}
             height={1080}
@@ -202,7 +202,7 @@ export default function NosStagesPage() {
           className="inline-block lg:w-1/2 h-[40vh] xl:h-[50vh] rounded-lg overflow-hidden"
         >
           <Image
-            src="/baptemes/bapteme-biplace-duree.png"
+            src="/baptemes/bapteme-biplace-duree.webp"
             alt={`Photo d&apos;un vol en parapente à Serre Chevalier`}
             width={1920}
             height={1080}
@@ -330,7 +330,7 @@ export default function NosStagesPage() {
           className="inline-block lg:w-1/2 h-[40vh] xl:h-[50vh] rounded-lg overflow-hidden"
         >
           <Image
-            src="/baptemes/bapteme-biplace-ptit-loup.png"
+            src="/baptemes/bapteme-biplace-ptit-loup.webp"
             alt={`Photo d&apos;un vol en parapente à Serre Chevalier`}
             width={1920}
             height={1080}
@@ -465,7 +465,7 @@ export default function NosStagesPage() {
           className="inline-block lg:w-1/2 h-[40vh] xl:h-[50vh] rounded-lg overflow-hidden"
         >
           <Image
-            src="/baptemes/bapteme-placeholder.png"
+            src="/baptemes/bapteme-placeholder.webp"
             alt={`Photo d&apos;un vol en parapente à Serre Chevalier`}
             width={1920}
             height={1080}
@@ -534,7 +534,7 @@ export default function NosStagesPage() {
       <section className="mx-4 my-24 lg:mx-36 xl:mx-48 lg:my-48 lg:flex lg:flex-row-reverse lg:gap-12 lg:items-center">
         <div className="inline-block lg:w-1/2 h-[40vh] xl:h-[50vh] rounded-lg overflow-hidden">
           <Image
-            src="/baptemes/bapteme-placeholder.png"
+            src="/baptemes/bapteme-placeholder.webp"
             alt={`Photo d&apos;un vol en parapente à Serre Chevalier`}
             width={1920}
             height={1080}
