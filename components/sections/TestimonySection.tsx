@@ -37,7 +37,7 @@ const testimonials = [
     content:
       "Une expérience hors du commun avec Didier et Clément de supers moniteurs. Des sensations incroyables !!! Je recommande :)",
     type: "image",
-    link_media: "/placeholder/testimonies/clementine.png",
+    link_media: "/placeholder/testimonies/clementine.webp",
     link_avis: "https://maps.app.goo.gl/K5kZP49GNN3xp9Ue8",
   },
   {
@@ -56,7 +56,7 @@ const testimonials = [
     content:
       "Clement à été très professionnel et a l'écoute , il a pu nous faire découvrir cette superbe discipline. Je le recommande sans hésiter.",
     type: "image",
-    link_media: "/placeholder/testimonies/tarak-gara.png",
+    link_media: "/placeholder/testimonies/tarak-gara.webp",
     link_avis: "https://maps.app.goo.gl/1rDLPULL73XTYMyH6",
   },
 ];

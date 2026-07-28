@@ -1,6 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getBlogs, getLastBlog, getCategories, getAuthors } from '@/sanity/lib/blogs';
 
+// Autorise Next à mettre en cache les réponses GET (1 h) pour éviter de relancer
+// une exécution serveur + un fetch Sanity à chaque appel.
+export const revalidate = 3600;
+
 export async function GET(request: NextRequest) {
   try {
     const searchParams = request.nextUrl.searchParams;
