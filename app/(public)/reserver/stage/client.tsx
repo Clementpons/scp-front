@@ -1349,7 +1349,8 @@ function StageReservationPageContent() {
       <div
         className={cn(
           "bg-white border-b border-slate-200 sticky top-0 z-10 shadow-sm transition-all ease-in-out duration-300",
-          isScrolled ? "pt-0 pb-0" : "pt-8 pb-0",
+          // Mobile: extra top padding so the row clears the floating logo/cart/menu (fixed, z-[70])
+          isScrolled ? "pt-16 md:pt-0 pb-0" : "pt-[calc(7.2vh+1.8rem)] md:pt-8 pb-0",
         )}
       >
         <div className="max-w-4xl mx-auto px-4 py-3">

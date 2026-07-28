@@ -155,7 +155,7 @@ const PostPage = async ({ params }: PostPageProps) => {
               id="contact"
             >
               <Image
-                src="/logo/logo-dark-nobg.webp"
+                src="/logo/new/scp-logo-line-slate_800_without_bg.svg"
                 alt="serreche-parapente-team"
                 width={214}
                 height={214}

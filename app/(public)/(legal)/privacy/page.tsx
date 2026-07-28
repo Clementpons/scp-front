@@ -28,7 +28,7 @@ export default function LegalPage() {
         <div className="mx-4 lg:mx-64 mb-16 -translate-y-[20vh]">
           <div className="p-4 md:p-8 rounded-lg  bg-white shadow-lg max-w-[750px] mx-auto -mb-[20vh] prose">
             <Image
-              src="/logo/logo-dark-nobg.webp"
+              src="/logo/new/scp-logo-line-slate_800_without_bg.svg"
               alt="Logo Serre Chevalier Parapente - Stage de Parapente"
               width={214}
               height={214}
@@ -230,7 +230,7 @@ export default function LegalPage() {
       </section>
       <section className="mx-4 my-24 lg:mx-36 xl:mx-48 lg:my-48" id="contact">
         <Image
-          src="/logo/logo-dark-nobg.webp"
+          src="/logo/new/scp-logo-line-slate_800_without_bg.svg"
           alt="Logo Serre Chevalier Parapente"
           width={214}
           height={214}

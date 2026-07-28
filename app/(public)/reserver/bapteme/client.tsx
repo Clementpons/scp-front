@@ -41,6 +41,7 @@ import {
   initCategoriesFromParam,
   type Bapteme,
 } from "@/components/booking/BaptemeCalendar";
+import { BaptemeWeekCalendar } from "@/components/booking/BaptemeWeekCalendar";
 
 // ─── Local Types ──────────────────────────────────────────────────────────────
 
@@ -55,10 +56,15 @@ interface ParticipantFormData {
   birthDate?: string;
 }
 
-
 // ─── Step Indicator ───────────────────────────────────────────────────────────
 
-function StepIndicator({ currentStep, onGoToStep1 }: { currentStep: 1 | 2; onGoToStep1?: () => void }) {
+function StepIndicator({
+  currentStep,
+  onGoToStep1,
+}: {
+  currentStep: 1 | 2;
+  onGoToStep1?: () => void;
+}) {
   return (
     <div className="flex items-center justify-center gap-2 py-2">
       <button
@@ -66,28 +72,53 @@ function StepIndicator({ currentStep, onGoToStep1 }: { currentStep: 1 | 2; onGoT
         onClick={currentStep === 2 ? onGoToStep1 : undefined}
         className={cn(
           "flex items-center gap-2 transition-opacity",
-          currentStep === 2 ? "cursor-pointer hover:opacity-70" : "cursor-default",
+          currentStep === 2
+            ? "cursor-pointer hover:opacity-70"
+            : "cursor-default",
         )}
       >
-        <div className={cn(
-          "w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold transition-all",
-          currentStep >= 1 ? "bg-blue-600 text-white" : "bg-slate-200 text-slate-500",
-        )}>
+        <div
+          className={cn(
+            "w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold transition-all",
+            currentStep >= 1
+              ? "bg-blue-600 text-white"
+              : "bg-slate-200 text-slate-500",
+          )}
+        >
           {currentStep > 1 ? <Check className="w-4 h-4" /> : "1"}
         </div>
-        <span className={cn("hidden sm:inline text-sm font-medium", currentStep >= 1 ? "text-blue-700" : "text-slate-400")}>
+        <span
+          className={cn(
+            "hidden sm:inline text-sm font-medium",
+            currentStep >= 1 ? "text-blue-700" : "text-slate-400",
+          )}
+        >
           Choisir un créneau
         </span>
       </button>
-      <div className={cn("h-0.5 w-6 sm:w-8 mx-1 transition-colors", currentStep >= 2 ? "bg-blue-600" : "bg-slate-200")} />
+      <div
+        className={cn(
+          "h-0.5 w-6 sm:w-8 mx-1 transition-colors",
+          currentStep >= 2 ? "bg-blue-600" : "bg-slate-200",
+        )}
+      />
       <div className="flex items-center gap-2">
-        <div className={cn(
-          "w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold transition-all",
-          currentStep >= 2 ? "bg-blue-600 text-white" : "bg-slate-200 text-slate-500",
-        )}>
+        <div
+          className={cn(
+            "w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold transition-all",
+            currentStep >= 2
+              ? "bg-blue-600 text-white"
+              : "bg-slate-200 text-slate-500",
+          )}
+        >
           2
         </div>
-        <span className={cn("hidden sm:inline text-sm font-medium", currentStep >= 2 ? "text-blue-700" : "text-slate-400")}>
+        <span
+          className={cn(
+            "hidden sm:inline text-sm font-medium",
+            currentStep >= 2 ? "text-blue-700" : "text-slate-400",
+          )}
+        >
           Vos informations
         </span>
       </div>
@@ -97,62 +128,62 @@ function StepIndicator({ currentStep, onGoToStep1 }: { currentStep: 1 | 2; onGoT
 
 // ─── Stats Summary ────────────────────────────────────────────────────────────
 
-function StatsSummary({
-  allBaptemes,
-  selectedCategories,
-  viewDate,
-}: {
-  allBaptemes: Bapteme[];
-  selectedCategories: string[];
-  viewDate: Date;
-}) {
-  const startOfMonth = useMemo(() => new Date(viewDate.getFullYear(), viewDate.getMonth(), 1), [viewDate]);
-  const endOfMonth = useMemo(() => new Date(viewDate.getFullYear(), viewDate.getMonth() + 1, 0), [viewDate]);
+// function StatsSummary({
+//   allBaptemes,
+//   selectedCategories,
+//   viewDate,
+// }: {
+//   allBaptemes: Bapteme[];
+//   selectedCategories: string[];
+//   viewDate: Date;
+// }) {
+//   const startOfMonth = useMemo(() => new Date(viewDate.getFullYear(), viewDate.getMonth(), 1), [viewDate]);
+//   const endOfMonth = useMemo(() => new Date(viewDate.getFullYear(), viewDate.getMonth() + 1, 0), [viewDate]);
 
-  const stats = useMemo(() =>
-    selectedCategories.map((catId) => {
-      const matching = allBaptemes.filter((b) => {
-        const d = new Date(b.date); d.setHours(0, 0, 0, 0);
-        if (d < startOfMonth || d > endOfMonth) return false;
-        return b.categories.includes(catId);
-      });
-      return {
-        catId,
-        count: matching.length,
-        totalPlaces: matching.reduce((sum, b) => sum + b.places, 0),
-      };
-    }),
-  [allBaptemes, selectedCategories, startOfMonth, endOfMonth]);
+//   const stats = useMemo(() =>
+//     selectedCategories.map((catId) => {
+//       const matching = allBaptemes.filter((b) => {
+//         const d = new Date(b.date); d.setHours(0, 0, 0, 0);
+//         if (d < startOfMonth || d > endOfMonth) return false;
+//         return b.categories.includes(catId);
+//       });
+//       return {
+//         catId,
+//         count: matching.length,
+//         totalPlaces: matching.reduce((sum, b) => sum + b.places, 0),
+//       };
+//     }),
+//   [allBaptemes, selectedCategories, startOfMonth, endOfMonth]);
 
-  if (allBaptemes.length === 0 || selectedCategories.length === 0) return null;
+//   if (allBaptemes.length === 0 || selectedCategories.length === 0) return null;
 
-  return (
-    <div className="text-sm space-y-1.5">
-      <p className="text-slate-500">
-        En <strong className="text-slate-700">{MONTH_NAMES[viewDate.getMonth()]} {viewDate.getFullYear()}</strong> :
-      </p>
-      <div className="space-y-1">
-        {stats.map(({ catId, count, totalPlaces }) => {
-          const cfg = CATEGORY_CONFIG[catId];
-          return (
-            <div key={catId} className="flex items-center gap-2">
-              <span className={cn("inline-block w-3 h-2.5 rounded-sm shrink-0", cfg?.bgBar)} />
-              <span className="text-slate-600">
-                <strong className="text-slate-800">{count}</strong> créneau{count > 1 ? "x" : ""}{" "}
-                <strong className={cfg?.textClass}>{cfg?.shortLabel}</strong>
-                {totalPlaces > 0 && (
-                  <span className="text-slate-400">
-                    {" "}— {totalPlaces} place{totalPlaces > 1 ? "s" : ""} au total
-                  </span>
-                )}
-              </span>
-            </div>
-          );
-        })}
-      </div>
-    </div>
-  );
-}
+//   return (
+//     <div className="text-sm space-y-1.5">
+//       <p className="text-slate-500">
+//         En <strong className="text-slate-700">{MONTH_NAMES[viewDate.getMonth()]} {viewDate.getFullYear()}</strong> :
+//       </p>
+//       <div className="space-y-1">
+//         {stats.map(({ catId, count, totalPlaces }) => {
+//           const cfg = CATEGORY_CONFIG[catId];
+//           return (
+//             <div key={catId} className="flex items-center gap-2">
+//               <span className={cn("inline-block w-3 h-2.5 rounded-sm shrink-0", cfg?.bgBar)} />
+//               <span className="text-slate-600">
+//                 <strong className="text-slate-800">{count}</strong> créneau{count > 1 ? "x" : ""}{" "}
+//                 <strong className={cfg?.textClass}>{cfg?.shortLabel}</strong>
+//                 {totalPlaces > 0 && (
+//                   <span className="text-slate-400">
+//                     {" "}— {totalPlaces} place{totalPlaces > 1 ? "s" : ""} au total
+//                   </span>
+//                 )}
+//               </span>
+//             </div>
+//           );
+//         })}
+//       </div>
+//     </div>
+//   );
+// }
 
 // ─── Main Component ───────────────────────────────────────────────────────────
 
@@ -162,8 +193,13 @@ function BaptemeReservationPageContent() {
   const { toast } = useToast();
 
   const [isScrolled, setIsScrolled] = useState(false);
-  const { register, handleSubmit, watch, setValue, formState: { errors } } =
-    useForm<ParticipantFormData>();
+  const {
+    register,
+    handleSubmit,
+    watch,
+    setValue,
+    formState: { errors },
+  } = useForm<ParticipantFormData>();
   const [isLoading, setIsLoading] = useState(false);
 
   const [selectedCategories, setSelectedCategories] = useState<string[]>(() =>
@@ -179,14 +215,19 @@ function BaptemeReservationPageContent() {
   const [showForm, setShowForm] = useState(false);
   const [showSuccessDialog, setShowSuccessDialog] = useState(false);
 
-  const { getPrice: getBaptemePrice, videoOptionPrice, loading: pricesLoading } =
-    useBaptemePrices();
+  const {
+    getPrice: getBaptemePrice,
+    videoOptionPrice,
+    loading: pricesLoading,
+  } = useBaptemePrices();
 
   const participantType = watch("participantType");
 
   useEffect(() => {
     const handleScroll = () =>
-      setIsScrolled((window.pageYOffset || document.documentElement.scrollTop) > 0);
+      setIsScrolled(
+        (window.pageYOffset || document.documentElement.scrollTop) > 0,
+      );
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -203,7 +244,9 @@ function BaptemeReservationPageContent() {
         setValue("weight", d.weight || "");
         setValue("height", d.height || "");
         setValue("birthDate", d.birthDate || "");
-      } catch { /* ignore */ }
+      } catch {
+        /* ignore */
+      }
     }
   }, [setValue]);
 
@@ -229,7 +272,9 @@ function BaptemeReservationPageContent() {
       .then((r) => r.json())
       .then((data) => {
         if (!data.success) return;
-        const bapteme = (data.data as Bapteme[]).find((b) => b.id === baptemeId);
+        const bapteme = (data.data as Bapteme[]).find(
+          (b) => b.id === baptemeId,
+        );
         if (!bapteme) return;
         setSelectedSlot(bapteme);
         setSelectedCategory(baptemeCategory);
@@ -238,7 +283,7 @@ function BaptemeReservationPageContent() {
         setValue("participantType", "self");
       })
       .catch(() => {});
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // Push a history entry when entering step 2 so the browser back button works
@@ -273,7 +318,8 @@ function BaptemeReservationPageContent() {
       const next = prev.includes(catId)
         ? prev.filter((c) => c !== catId)
         : [...prev, catId];
-      const param = next.length === ALL_CATEGORY_IDS.length ? "all" : next.join(",");
+      const param =
+        next.length === ALL_CATEGORY_IDS.length ? "all" : next.join(",");
       router.replace(`?category=${param}`, { scroll: false });
       return next;
     });
@@ -292,17 +338,25 @@ function BaptemeReservationPageContent() {
 
   const saveUserInfo = (data: ParticipantFormData) => {
     if (data.participantType === "self") {
-      localStorage.setItem("userInfo", JSON.stringify({
-        firstName: data.firstName, lastName: data.lastName,
-        email: data.email, phone: data.phone,
-        weight: data.weight, height: data.height, birthDate: data.birthDate,
-      }));
+      localStorage.setItem(
+        "userInfo",
+        JSON.stringify({
+          firstName: data.firstName,
+          lastName: data.lastName,
+          email: data.email,
+          phone: data.phone,
+          weight: data.weight,
+          height: data.height,
+          birthDate: data.birthDate,
+        }),
+      );
     }
   };
 
   const catCfg = CATEGORY_CONFIG[selectedCategory];
   const catInfo = BAPTEME_CATEGORIES.find((c) => c.id === selectedCategory);
-  const basePrice = selectedSlot && selectedCategory ? getBaptemePrice(selectedCategory) : 0;
+  const basePrice =
+    selectedSlot && selectedCategory ? getBaptemePrice(selectedCategory) : 0;
   const totalPrice = basePrice + (hasVideo ? videoOptionPrice : 0);
 
   const onSubmit = async (data: ParticipantFormData) => {
@@ -311,32 +365,36 @@ function BaptemeReservationPageContent() {
     try {
       saveUserInfo(data);
       const sessionId = SessionManager.getOrCreateSessionId();
-      const res = await fetch(`${process.env.NEXT_PUBLIC_BACKOFFICE_URL}/api/cart/items`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "x-session-id": sessionId,
-          "x-api-key": process.env.NEXT_PUBLIC_API_KEY || "",
-        },
-        body: JSON.stringify({
-          type: "BAPTEME",
-          itemId: selectedSlot.id,
-          participantData: {
-            ...data,
-            weight: Number(data.weight),
-            height: Number(data.height),
-            selectedCategory,
-            hasVideo,
+      const res = await fetch(
+        `${process.env.NEXT_PUBLIC_BACKOFFICE_URL}/api/cart/items`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "x-session-id": sessionId,
+            "x-api-key": process.env.NEXT_PUBLIC_API_KEY || "",
           },
-          quantity: 1,
-        }),
-      });
+          body: JSON.stringify({
+            type: "BAPTEME",
+            itemId: selectedSlot.id,
+            participantData: {
+              ...data,
+              weight: Number(data.weight),
+              height: Number(data.height),
+              selectedCategory,
+              hasVideo,
+            },
+            quantity: 1,
+          }),
+        },
+      );
       const result = await res.json();
       if (result.success) {
         window.dispatchEvent(new CustomEvent("cartUpdated"));
         toast({
           title: "Place réservée temporairement",
-          description: "Cette place est bloquée pendant 1h00. Finalisez votre paiement pour confirmer.",
+          description:
+            "Cette place est bloquée pendant 1h00. Finalisez votre paiement pour confirmer.",
           duration: 5000,
         });
         setShowSuccessDialog(true);
@@ -348,7 +406,11 @@ function BaptemeReservationPageContent() {
         });
       }
     } catch {
-      toast({ title: "Erreur", description: "Erreur lors de l'ajout au panier", variant: "destructive" });
+      toast({
+        title: "Erreur",
+        description: "Erreur lors de l'ajout au panier",
+        variant: "destructive",
+      });
     } finally {
       setIsLoading(false);
     }
@@ -357,10 +419,13 @@ function BaptemeReservationPageContent() {
   return (
     <div className="min-h-screen bg-slate-50">
       {/* Sticky header */}
-      <div className={cn(
-        "bg-white border-b border-slate-200 sticky top-0 z-10 shadow-sm transition-all ease-in-out duration-300",
-        isScrolled ? "pt-0 pb-0" : "pt-12 pb-4",
-      )}>
+      <div
+        className={cn(
+          "bg-white border-b border-slate-200 sticky top-0 z-10 shadow-sm transition-all ease-in-out duration-300",
+          // Mobile: extra top padding so the row clears the floating logo/cart/menu (fixed, z-[70])
+          isScrolled ? "pt-16 md:pt-0 pb-0" : "pt-[calc(7.2vh+1.8rem)] md:pt-12 pb-4",
+        )}
+      >
         <div className="max-w-4xl mx-auto px-4 py-3">
           <div className="flex items-center justify-between gap-3 sm:gap-4">
             <div className="shrink-0">
@@ -382,26 +447,30 @@ function BaptemeReservationPageContent() {
               Réserver un baptême
             </h1>
             <div className="shrink-0">
-              <StepIndicator currentStep={showForm ? 2 : 1} onGoToStep1={goToStep1} />
+              <StepIndicator
+                currentStep={showForm ? 2 : 1}
+                onGoToStep1={goToStep1}
+              />
             </div>
           </div>
         </div>
       </div>
 
-      <div className="max-w-4xl mx-auto px-4 py-8 pt-24 space-y-6">
-
+      <div className="max-w-4xl mx-auto px-4 py-8 space-y-6">
         {/* ── ÉTAPE 1 : calendrier (masqué en étape 2) ── */}
         {!showForm ? (
           <div className="space-y-5">
             <div className="text-center">
               <h2 className="text-2xl sm:text-3xl font-bold text-slate-800 mb-2">
-                Choisissez votre créneau
+                Réserver un baptême
               </h2>
             </div>
 
             {/* Category filters */}
-            <div className="flex items-center gap-2 flex-wrap">
-              <span className="text-sm font-semibold text-slate-600 shrink-0">Filtrer par formule</span>
+            {/* <div className="flex items-center gap-2 flex-wrap">
+              <span className="text-sm font-semibold text-slate-600 shrink-0">
+                Filtrer par formule
+              </span>
               {BAPTEME_CATEGORIES.map((cat) => {
                 const isChecked = selectedCategories.includes(cat.id);
                 const cfg = CATEGORY_CONFIG[cat.id];
@@ -417,27 +486,38 @@ function BaptemeReservationPageContent() {
                         : "bg-slate-100 text-slate-500 hover:bg-slate-200 hover:text-slate-700",
                     )}
                   >
-                    <span className={cn(
-                      "inline-flex items-center justify-center w-3.5 h-3.5 rounded shrink-0 transition-all",
-                      isChecked ? `${cfg.dotClass} border-transparent` : "border border-slate-300 bg-white",
-                    )}>
-                      {isChecked && <Check className="w-2 h-2 text-white" strokeWidth={3} />}
+                    <span
+                      className={cn(
+                        "inline-flex items-center justify-center w-3.5 h-3.5 rounded shrink-0 transition-all",
+                        isChecked
+                          ? `${cfg.dotClass} border-transparent`
+                          : "border border-slate-300 bg-white",
+                      )}
+                    >
+                      {isChecked && (
+                        <Check className="w-2 h-2 text-white" strokeWidth={3} />
+                      )}
                     </span>
                     {cat.name}
-                    <span className="opacity-60 font-normal">{cat.durationLabel}</span>
+                    <span className="opacity-60 font-normal">
+                      {cat.durationLabel}
+                    </span>
                   </button>
                 );
               })}
-            </div>
-            <p className="text-sm text-slate-500">
+            </div> */}
+            <p className="text-sm text-center text-slate-500">
               Vous avez un bon cadeau ?{" "}
-              <Link href="/utiliser-bon-cadeau" className="text-cyan-600 hover:underline font-medium">
+              <Link
+                href="/utiliser-bon-cadeau"
+                className="text-cyan-600 hover:underline font-medium"
+              >
                 Utilisez-le pour régler votre réservation
               </Link>
             </p>
 
-            {/* Calendar */}
-            <Card>
+            {/* OLD Calendar */}
+            {/* <Card>
               <CardContent className="p-3 sm:p-5">
                 <BaptemeCalendar
                   selectedCategories={selectedCategories}
@@ -448,9 +528,25 @@ function BaptemeReservationPageContent() {
                   onViewDateChange={setCalendarViewDate}
                 />
               </CardContent>
+            </Card> */}
+
+            {/* NEW Calendar */}
+            <Card>
+              <CardContent className="p-3 sm:p-5">
+                <BaptemeWeekCalendar
+                  onSlotSelect={handleSlotSelect}
+                  selectedSlot={selectedSlot}
+                  getBaptemePrice={getBaptemePrice}
+                  initialCategory={
+                    selectedCategories.length === 1
+                      ? selectedCategories[0]
+                      : undefined
+                  }
+                />
+              </CardContent>
             </Card>
 
-            {/* Stats below calendar */}
+            {/* Stats below calendar 
             {accumulatedBaptemes.length > 0 && (
               <StatsSummary
                 allBaptemes={accumulatedBaptemes}
@@ -458,67 +554,83 @@ function BaptemeReservationPageContent() {
                 viewDate={calendarViewDate}
               />
             )}
+            */}
           </div>
-        ) : selectedSlot && selectedCategory && (
-          /* Résumé compact du créneau en étape 2 */
-          <Card className="border-2 border-blue-200 bg-blue-50">
-            <CardContent className="p-4 sm:p-5">
-              <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3">
-                <div>
-                  <p className="text-xs font-semibold text-blue-600 uppercase mb-1.5 flex items-center gap-1.5">
-                    <Check className="w-3.5 h-3.5" /> Créneau sélectionné
-                  </p>
-                  <p className="font-bold text-sm" style={{ color: catCfg?.bgBarHex }}>
-                    {catCfg?.label}
-                  </p>
-                  <p className="font-semibold text-slate-800 text-sm mt-0.5">
-                    {formatDateFull(selectedSlot.date)} à {formatTime(selectedSlot.date)}
-                    {catInfo && (
-                      <span className="text-slate-500 font-normal">
-                        {" "}({catInfo.durationLabel} de vol)
-                      </span>
-                    )}
-                  </p>
-                  {(() => {
-                    const moniteurNames = formatMoniteurNames(selectedSlot);
-                    return moniteurNames ? (
-                      <p className="text-xs text-slate-500 mt-0.5">
-                        {selectedSlot.moniteurs && selectedSlot.moniteurs.length > 1
-                          ? "Moniteurs : "
-                          : "Moniteur : "}
-                        <span className="font-medium text-slate-700">{moniteurNames}</span>
-                      </p>
-                    ) : null;
-                  })()}
-                </div>
-                <div className="flex flex-col items-end gap-1 shrink-0">
-                  <p className="font-bold text-2xl text-blue-600">{basePrice}€</p>
-                  {selectedSlot.acomptePrice && (
-                    <p className="text-xs text-slate-500">
-                      Acompte aujourd&apos;hui :{" "}
-                      <span className="font-semibold text-slate-700">{selectedSlot.acomptePrice}€</span>
-                      {" · "}solde sur place :{" "}
-                      <span className="font-semibold text-slate-700">
-                        {basePrice - selectedSlot.acomptePrice}€
-                      </span>
+        ) : (
+          selectedSlot &&
+          selectedCategory && (
+            /* Résumé compact du créneau en étape 2 */
+            <Card className="border-2 border-blue-200 bg-blue-50">
+              <CardContent className="p-4 sm:p-5">
+                <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3">
+                  <div>
+                    <p className="text-xs font-semibold text-blue-600 uppercase mb-1.5 flex items-center gap-1.5">
+                      <Check className="w-3.5 h-3.5" /> Créneau sélectionné
                     </p>
-                  )}
-                  <Button
-                    size="sm"
-                    variant="outline"
-                    className="mt-1"
-                    onClick={() => {
-                      setSelectedSlot(null);
-                      setSelectedCategory("");
-                      setShowForm(false);
-                    }}
-                  >
-                    Changer de créneau
-                  </Button>
+                    <p
+                      className="font-bold text-sm"
+                      style={{ color: catCfg?.bgBarHex }}
+                    >
+                      {catCfg?.label}
+                    </p>
+                    <p className="font-semibold text-slate-800 text-sm mt-0.5">
+                      {formatDateFull(selectedSlot.date)} à{" "}
+                      {formatTime(selectedSlot.date)}
+                      {catInfo && (
+                        <span className="text-slate-500 font-normal">
+                          {" "}
+                          ({catInfo.durationLabel} de vol)
+                        </span>
+                      )}
+                    </p>
+                    {(() => {
+                      const moniteurNames = formatMoniteurNames(selectedSlot);
+                      return moniteurNames ? (
+                        <p className="text-xs text-slate-500 mt-0.5">
+                          {selectedSlot.moniteurs &&
+                          selectedSlot.moniteurs.length > 1
+                            ? "Moniteurs : "
+                            : "Moniteur : "}
+                          <span className="font-medium text-slate-700">
+                            {moniteurNames}
+                          </span>
+                        </p>
+                      ) : null;
+                    })()}
+                  </div>
+                  <div className="flex flex-col items-end gap-1 shrink-0">
+                    <p className="font-bold text-2xl text-blue-600">
+                      {basePrice}€
+                    </p>
+                    {selectedSlot.acomptePrice && (
+                      <p className="text-xs text-slate-500">
+                        Acompte aujourd&apos;hui :{" "}
+                        <span className="font-semibold text-slate-700">
+                          {selectedSlot.acomptePrice}€
+                        </span>
+                        {" · "}solde sur place :{" "}
+                        <span className="font-semibold text-slate-700">
+                          {basePrice - selectedSlot.acomptePrice}€
+                        </span>
+                      </p>
+                    )}
+                    <Button
+                      size="sm"
+                      variant="outline"
+                      className="mt-1"
+                      onClick={() => {
+                        setSelectedSlot(null);
+                        setSelectedCategory("");
+                        setShowForm(false);
+                      }}
+                    >
+                      Changer de créneau
+                    </Button>
+                  </div>
                 </div>
-              </div>
-            </CardContent>
-          </Card>
+              </CardContent>
+            </Card>
+          )
         )}
 
         {/* ── ÉTAPE 2 ── */}
@@ -534,7 +646,8 @@ function BaptemeReservationPageContent() {
                   Vos informations
                 </h2>
                 <p className="text-slate-600 text-sm sm:text-base">
-                  Renseignez les informations du participant pour finaliser la réservation
+                  Renseignez les informations du participant pour finaliser la
+                  réservation
                 </p>
               </div>
 
@@ -547,11 +660,17 @@ function BaptemeReservationPageContent() {
                   <RadioGroup
                     defaultValue="self"
                     className="grid grid-cols-1 sm:grid-cols-2 gap-4"
-                    onValueChange={(v) => setValue("participantType", v as "self" | "other")}
+                    onValueChange={(v) =>
+                      setValue("participantType", v as "self" | "other")
+                    }
                   >
                     {(["self", "other"] as const).map((val) => (
                       <div key={val} className="relative">
-                        <RadioGroupItem value={val} id={val} className="peer sr-only" />
+                        <RadioGroupItem
+                          value={val}
+                          id={val}
+                          className="peer sr-only"
+                        />
                         <Label
                           htmlFor={val}
                           className={cn(
@@ -562,16 +681,26 @@ function BaptemeReservationPageContent() {
                           )}
                         >
                           <div className="text-center">
-                            <div className={cn(
-                              "font-semibold text-base",
-                              participantType === val ? "text-blue-700" : "text-slate-800",
-                            )}>
-                              {val === "self" ? "Pour moi" : "Pour quelqu'un d'autre"}
+                            <div
+                              className={cn(
+                                "font-semibold text-base",
+                                participantType === val
+                                  ? "text-blue-700"
+                                  : "text-slate-800",
+                              )}
+                            >
+                              {val === "self"
+                                ? "Pour moi"
+                                : "Pour quelqu'un d'autre"}
                             </div>
-                            <div className={cn(
-                              "text-xs mt-1",
-                              participantType === val ? "text-blue-600" : "text-slate-500",
-                            )}>
+                            <div
+                              className={cn(
+                                "text-xs mt-1",
+                                participantType === val
+                                  ? "text-blue-600"
+                                  : "text-slate-500",
+                              )}
+                            >
                               {val === "self"
                                 ? "Mes informations seront sauvegardées"
                                 : "Cadeau ou réservation tierce"}
@@ -586,7 +715,10 @@ function BaptemeReservationPageContent() {
                 {/* Informations participant */}
                 <div className="space-y-6">
                   <h3 className="text-base font-semibold text-slate-800">
-                    Informations {participantType === "self" ? "personnelles" : "du participant"}
+                    Informations{" "}
+                    {participantType === "self"
+                      ? "personnelles"
+                      : "du participant"}
                   </h3>
                   <div className="space-y-4">
                     <h4 className="font-medium text-slate-700 border-l-4 border-blue-600 pl-3 text-sm">
@@ -597,12 +729,20 @@ function BaptemeReservationPageContent() {
                         <Label htmlFor="firstName">Prénom *</Label>
                         <Input
                           id="firstName"
-                          {...register("firstName", { required: "Prénom requis" })}
-                          placeholder={participantType === "self" ? "Votre prénom" : "Prénom du participant"}
+                          {...register("firstName", {
+                            required: "Prénom requis",
+                          })}
+                          placeholder={
+                            participantType === "self"
+                              ? "Votre prénom"
+                              : "Prénom du participant"
+                          }
                           className="mt-1"
                         />
                         {errors.firstName && (
-                          <p className="text-red-500 text-sm mt-1">{errors.firstName.message}</p>
+                          <p className="text-red-500 text-sm mt-1">
+                            {errors.firstName.message}
+                          </p>
                         )}
                       </div>
                       <div>
@@ -610,11 +750,17 @@ function BaptemeReservationPageContent() {
                         <Input
                           id="lastName"
                           {...register("lastName", { required: "Nom requis" })}
-                          placeholder={participantType === "self" ? "Votre nom" : "Nom du participant"}
+                          placeholder={
+                            participantType === "self"
+                              ? "Votre nom"
+                              : "Nom du participant"
+                          }
                           className="mt-1"
                         />
                         {errors.lastName && (
-                          <p className="text-red-500 text-sm mt-1">{errors.lastName.message}</p>
+                          <p className="text-red-500 text-sm mt-1">
+                            {errors.lastName.message}
+                          </p>
                         )}
                       </div>
                     </div>
@@ -627,7 +773,9 @@ function BaptemeReservationPageContent() {
                         className="mt-1"
                       />
                       {errors.birthDate && (
-                        <p className="text-red-500 text-sm mt-1">{errors.birthDate.message}</p>
+                        <p className="text-red-500 text-sm mt-1">
+                          {errors.birthDate.message}
+                        </p>
                       )}
                     </div>
                   </div>
@@ -646,7 +794,9 @@ function BaptemeReservationPageContent() {
                           className="mt-1"
                         />
                         {errors.email && (
-                          <p className="text-red-500 text-sm mt-1">{errors.email.message}</p>
+                          <p className="text-red-500 text-sm mt-1">
+                            {errors.email.message}
+                          </p>
                         )}
                       </div>
                       <div>
@@ -658,7 +808,9 @@ function BaptemeReservationPageContent() {
                           className="mt-1"
                         />
                         {errors.phone && (
-                          <p className="text-red-500 text-sm mt-1">{errors.phone.message}</p>
+                          <p className="text-red-500 text-sm mt-1">
+                            {errors.phone.message}
+                          </p>
                         )}
                       </div>
                     </div>
@@ -682,7 +834,9 @@ function BaptemeReservationPageContent() {
                           className="mt-1"
                         />
                         {errors.weight && (
-                          <p className="text-red-500 text-sm mt-1">{errors.weight.message}</p>
+                          <p className="text-red-500 text-sm mt-1">
+                            {errors.weight.message}
+                          </p>
                         )}
                       </div>
                       <div>
@@ -699,7 +853,9 @@ function BaptemeReservationPageContent() {
                           className="mt-1"
                         />
                         {errors.height && (
-                          <p className="text-red-500 text-sm mt-1">{errors.height.message}</p>
+                          <p className="text-red-500 text-sm mt-1">
+                            {errors.height.message}
+                          </p>
                         )}
                       </div>
                     </div>
@@ -742,36 +898,52 @@ function BaptemeReservationPageContent() {
 
                 {/* Récapitulatif */}
                 <div className="p-4 sm:p-6 bg-slate-50 rounded-xl border border-slate-200">
-                  <h3 className="text-base font-semibold text-slate-800 mb-4">Récapitulatif</h3>
+                  <h3 className="text-base font-semibold text-slate-800 mb-4">
+                    Récapitulatif
+                  </h3>
                   <div className="space-y-3">
                     <div className="flex justify-between items-center">
-                      <span className="font-medium text-slate-700">{catCfg?.label}</span>
-                      <span className="font-semibold text-slate-800">{basePrice}€</span>
+                      <span className="font-medium text-slate-700">
+                        {catCfg?.label}
+                      </span>
+                      <span className="font-semibold text-slate-800">
+                        {basePrice}€
+                      </span>
                     </div>
                     {hasVideo && (
                       <div className="flex justify-between items-center">
                         <span className="text-slate-600 flex items-center gap-2">
                           <Video className="w-3 h-3" /> Option vidéo
                         </span>
-                        <span className="text-slate-800">+{videoOptionPrice}€</span>
+                        <span className="text-slate-800">
+                          +{videoOptionPrice}€
+                        </span>
                       </div>
                     )}
                     <hr className="border-slate-300" />
                     <div className="flex justify-between items-center">
-                      <span className="font-bold text-lg text-slate-800">Total</span>
-                      <span className="font-bold text-2xl text-blue-600">{totalPrice}€</span>
+                      <span className="font-bold text-lg text-slate-800">
+                        Total
+                      </span>
+                      <span className="font-bold text-2xl text-blue-600">
+                        {totalPrice}€
+                      </span>
                     </div>
                     {selectedSlot.acomptePrice && (
                       <>
                         <hr className="border-dashed border-slate-200" />
                         <div className="flex justify-between items-center text-sm">
-                          <span className="text-slate-600">Acompte à régler aujourd&apos;hui</span>
+                          <span className="text-slate-600">
+                            Acompte à régler aujourd&apos;hui
+                          </span>
                           <span className="font-semibold text-slate-800">
                             {selectedSlot.acomptePrice}€
                           </span>
                         </div>
                         <div className="flex justify-between items-center text-sm">
-                          <span className="text-slate-500">Solde à régler sur place</span>
+                          <span className="text-slate-500">
+                            Solde à régler sur place
+                          </span>
                           <span className="text-slate-600">
                             {totalPrice - selectedSlot.acomptePrice}€
                           </span>
@@ -796,10 +968,16 @@ function BaptemeReservationPageContent() {
                   >
                     Modifier le créneau
                   </Button>
-                  <Button type="submit" disabled={isLoading} className="flex-1 h-12" size="lg">
+                  <Button
+                    type="submit"
+                    disabled={isLoading}
+                    className="flex-1 h-12"
+                    size="lg"
+                  >
                     {isLoading ? (
                       <div className="flex items-center gap-2">
-                        <Clock className="w-4 h-4 animate-spin" /> Ajout en cours…
+                        <Clock className="w-4 h-4 animate-spin" /> Ajout en
+                        cours…
                       </div>
                     ) : (
                       <div className="flex items-center gap-2">
@@ -837,7 +1015,8 @@ function BaptemeReservationPageContent() {
                 Votre place est bloquée pendant 1h00
               </p>
               <p className="text-sm">
-                Finalisez votre paiement dans l&apos;heure pour confirmer votre réservation.
+                Finalisez votre paiement dans l&apos;heure pour confirmer votre
+                réservation.
               </p>
               <div className="flex items-center justify-center gap-2 text-orange-600 bg-orange-50 p-2 rounded-lg mt-3">
                 <Clock className="w-4 h-4" />
@@ -854,7 +1033,10 @@ function BaptemeReservationPageContent() {
                       if (!start) return;
                       setS(initialSeconds);
                       const id = setInterval(
-                        () => setS((p) => (p <= 1 ? (clearInterval(id), 0) : p - 1)),
+                        () =>
+                          setS((p) =>
+                            p <= 1 ? (clearInterval(id), 0) : p - 1,
+                          ),
                         1000,
                       );
                       return () => clearInterval(id);
@@ -862,26 +1044,39 @@ function BaptemeReservationPageContent() {
                     return (
                       <span className="text-sm font-medium">
                         Temps restant :{" "}
-                        {Math.floor(s / 60).toString().padStart(2, "0")}:
-                        {(s % 60).toString().padStart(2, "0")}
+                        {Math.floor(s / 60)
+                          .toString()
+                          .padStart(2, "0")}
+                        :{(s % 60).toString().padStart(2, "0")}
                       </span>
                     );
                   }
-                  return <Countdown initialSeconds={3600} start={showSuccessDialog} />;
+                  return (
+                    <Countdown
+                      initialSeconds={3600}
+                      start={showSuccessDialog}
+                    />
+                  );
                 })()}
               </div>
             </DialogDescription>
           </DialogHeader>
           <div className="flex flex-col gap-2 mt-4">
             <Button
-              onClick={() => { setShowSuccessDialog(false); router.push("/reserver"); }}
+              onClick={() => {
+                setShowSuccessDialog(false);
+                router.push("/reserver");
+              }}
               className="w-full gap-2"
               size="lg"
             >
               <ArrowLeft className="w-4 h-4" /> Je continue mes achats
             </Button>
             <Button
-              onClick={() => { setShowSuccessDialog(false); router.push("/checkout"); }}
+              onClick={() => {
+                setShowSuccessDialog(false);
+                router.push("/checkout");
+              }}
               variant="outline"
               className="w-full gap-2"
               size="lg"

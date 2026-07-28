@@ -39,16 +39,16 @@ export default function NotFound() {
         <Link
           href={"/"}
           title="Page d'accueil de l'école Serre Chevalier Parapente"
-          className={`bg-slate-800 w-12 md:w-16 lg:w-24 h-12 md:h-16 lg:h-24 p-0.5 2xl:p-1 z-[70] transition-all duration-300 rounded-full
+          className={`w-12 md:w-16 lg:w-24 z-[70] transition-all duration-300 rounded-xl
         ${isScrolled ? "fixed left-4 top-4" : "fixed left-4 top-[6vh]"}
         `}
         >
           <Image
-            src={"/logo/logo-light-nobg.webp"}
-            width={70}
-            height={70}
+            src={"/logo/new/scp-logo-icon-slate_800.svg"}
+            width={20}
+            height={20}
             alt="Logo Parapente à Serre Chevalier"
-            className="w-full"
+            className="w-full object-contain"
             priority
           />
         </Link>

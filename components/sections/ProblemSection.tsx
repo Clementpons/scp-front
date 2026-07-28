@@ -9,7 +9,7 @@ export default function ProblemSection() {
   return (
     <section className="mx-4 my-24 lg:mx-36 xl:mx-48 lg:my-48" id="contact">
       <Image
-        src="/logo/logo-dark-nobg.webp"
+        src="/logo/new/scp-logo-line-slate_800_without_bg.svg"
         alt="Logo Serre chevalier Parapente"
         width={214}
         height={214}
