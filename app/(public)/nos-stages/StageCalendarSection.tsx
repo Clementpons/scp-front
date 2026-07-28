@@ -12,7 +12,7 @@ import {
   ChevronLeft,
   Loader2,
 } from "lucide-react";
-import { cn } from "@/lib/utils";
+import { cn, monthRange } from "@/lib/utils";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -157,8 +157,7 @@ function StageCalendarWidget({ onSlotSelect }: { onSlotSelect: (stage: Stage) =>
     const ctrl = new AbortController();
     setLoadingStages(true);
 
-    const from = new Date(year, month, 1).toISOString().split("T")[0];
-    const to = new Date(year, month + 1, 0).toISOString().split("T")[0];
+    const { from, to } = monthRange(year, month);
 
     fetch(
       `${process.env.NEXT_PUBLIC_BACKOFFICE_URL}/api/stages?from=${from}&to=${to}&types=INITIATION,PROGRESSION,AUTONOMIE,DOUBLE`,

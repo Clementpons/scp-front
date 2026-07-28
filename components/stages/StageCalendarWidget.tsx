@@ -14,7 +14,7 @@ import {
 } from "@/components/ui/dialog";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { cn } from "@/lib/utils";
+import { cn, monthRange } from "@/lib/utils";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -151,8 +151,7 @@ export default function StageCalendarWidget({ stageType }: { stageType: StageTyp
     const ctrl = new AbortController();
     setLoadingStages(true);
 
-    const from   = new Date(year, month, 1).toISOString().split("T")[0];
-    const to     = new Date(year, month + 1, 0).toISOString().split("T")[0];
+    const { from, to } = monthRange(year, month);
     const params = new URLSearchParams({ from, to, types: apiTypes.join(",") });
 
     fetch(`${process.env.NEXT_PUBLIC_BACKOFFICE_URL}/api/stages?${params}`, {

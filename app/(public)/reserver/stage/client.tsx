@@ -31,7 +31,7 @@ import {
   DialogDescription,
 } from "@/components/ui/dialog";
 import Link from "next/link";
-import { cn } from "@/lib/utils";
+import { cn, monthRange } from "@/lib/utils";
 import { Separator } from "@/components/ui/separator";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
@@ -396,8 +396,7 @@ function StageCalendar({
     const ctrl = new AbortController();
     setLoadingStages(true);
 
-    const from = new Date(year, month, 1).toISOString().split("T")[0];
-    const to = new Date(year, month + 1, 0).toISOString().split("T")[0];
+    const { from, to } = monthRange(year, month);
 
     // Include DOUBLE when INITIATION or PROGRESSION are selected
     const apiTypes = [...selectedTypes];

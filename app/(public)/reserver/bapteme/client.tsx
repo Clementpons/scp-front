@@ -27,7 +27,7 @@ import {
   DialogDescription,
 } from "@/components/ui/dialog";
 import Link from "next/link";
-import { cn } from "@/lib/utils";
+import { cn, monthRange } from "@/lib/utils";
 import { Separator } from "@/components/ui/separator";
 import {
   BaptemeCalendar,
@@ -37,6 +37,7 @@ import {
   CATEGORY_CONFIG,
   formatDateFull,
   formatTime,
+  formatMoniteurNames,
   initCategoriesFromParam,
   type Bapteme,
 } from "@/components/booking/BaptemeCalendar";
@@ -219,8 +220,7 @@ function BaptemeReservationPageContent() {
 
     const year = d.getFullYear();
     const month = d.getMonth();
-    const from = new Date(year, month, 1).toISOString().split("T")[0];
-    const to = new Date(year, month + 1, 0).toISOString().split("T")[0];
+    const { from, to } = monthRange(year, month);
 
     fetch(
       `${process.env.NEXT_PUBLIC_BACKOFFICE_URL}/api/baptemes?from=${from}&to=${to}&categories=all`,
@@ -479,6 +479,17 @@ function BaptemeReservationPageContent() {
                       </span>
                     )}
                   </p>
+                  {(() => {
+                    const moniteurNames = formatMoniteurNames(selectedSlot);
+                    return moniteurNames ? (
+                      <p className="text-xs text-slate-500 mt-0.5">
+                        {selectedSlot.moniteurs && selectedSlot.moniteurs.length > 1
+                          ? "Moniteurs : "
+                          : "Moniteur : "}
+                        <span className="font-medium text-slate-700">{moniteurNames}</span>
+                      </p>
+                    ) : null;
+                  })()}
                 </div>
                 <div className="flex flex-col items-end gap-1 shrink-0">
                   <p className="font-bold text-2xl text-blue-600">{basePrice}€</p>

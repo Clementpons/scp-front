@@ -10,7 +10,7 @@ import {
   Loader2,
   Check,
 } from "lucide-react";
-import { cn } from "@/lib/utils";
+import { cn, monthRange } from "@/lib/utils";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -29,6 +29,9 @@ export interface Bapteme {
   categories: string[];
   acomptePrice?: number | null;
   availablePlaces: number;
+  moniteurs?: Array<{
+    moniteur: { id: string; name: string; avatarUrl?: string | null };
+  }>;
 }
 
 interface AvailData {
@@ -164,6 +167,12 @@ export function formatTime(dateString: string): string {
   return date.toLocaleTimeString("fr-FR", { hour: "2-digit", minute: "2-digit" });
 }
 
+export function formatMoniteurNames(bapteme: Bapteme): string | null {
+  const names =
+    bapteme.moniteurs?.map((m) => m.moniteur?.name).filter(Boolean) ?? [];
+  return names.length > 0 ? names.join(", ") : null;
+}
+
 export function initCategoriesFromParam(param: string | null): string[] {
   if (!param || param === "all") return ALL_CATEGORY_IDS;
   const cats = param.split(",").filter((c) => ALL_CATEGORY_IDS.includes(c));
@@ -232,8 +241,7 @@ export function BaptemeCalendar({
     const ctrl = new AbortController();
     setLoadingBaptemes(true);
 
-    const from = new Date(year, month, 1).toISOString().split("T")[0];
-    const to   = new Date(year, month + 1, 0).toISOString().split("T")[0];
+    const { from, to } = monthRange(year, month);
     const params = new URLSearchParams({ from, to, categories: selectedCategories.join(",") });
 
     fetch(
@@ -666,6 +674,19 @@ export function BaptemeCalendar({
                   <p className="text-xs font-bold" style={{ color: thex }}>
                     {ci?.durationLabel} — {getBaptemePrice(cat)}€
                   </p>
+                  {(() => {
+                    const moniteurNames = formatMoniteurNames(b);
+                    return moniteurNames ? (
+                      <p className="text-xs text-slate-500">
+                        {b.moniteurs && b.moniteurs.length > 1
+                          ? "Moniteurs : "
+                          : "Moniteur : "}
+                        <span className="font-medium text-slate-700">
+                          {moniteurNames}
+                        </span>
+                      </p>
+                    ) : null;
+                  })()}
                   <p className="text-xs text-slate-500">
                     {ta === undefined
                       ? "Chargement…"
