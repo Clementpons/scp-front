@@ -21,18 +21,18 @@ export default function LegalPage() {
             src="/placeholder/hero.webp"
             width={1920}
             height={1080}
-            alt="Illustration d&apos;un vol de parapente au dessus de la vallé de Serre chevelier Briançon"
+            alt="Illustration d'un vol de parapente au dessus de la vallé de Serre chevelier Briançon"
             className="h-full w-full object-cover object-center"
           />
         </div>
         <div className="mx-4 lg:mx-64 mb-16 -translate-y-[20vh]">
           <div className="p-4 md:p-8 rounded-lg  bg-white shadow-lg max-w-[750px] mx-auto -mb-[20vh] prose">
             <Image
-              src="/logo/new/scp-logo-line-slate_800_without_bg.svg"
+              src="/logo/new/scp-logo-full_text-dark_icon-blue.svg"
               alt="Logo Serre Chevalier Parapente - Stage de Parapente"
               width={214}
               height={214}
-              className="block w-24 h-24 mx-auto"
+              className="block py-8 mx-auto"
             />
             <h1 className="my-8 text-center text-balance">
               CONDITIONS GÉNÉRALES DE VENTE (CGV)
@@ -45,8 +45,8 @@ export default function LegalPage() {
               <p>
                 Les présentes Conditions Générales de Vente (CGV) régissent les
                 ventes de prestations de Serre Chevalier Parapente via son site
-                internet serre-chevalier-parapente.fr. Elles définissent les droits et
-                obligations des parties dans le cadre des réservations
+                internet serre-chevalier-parapente.fr. Elles définissent les
+                droits et obligations des parties dans le cadre des réservations
                 effectuées en ligne.
               </p>
 
@@ -70,9 +70,9 @@ export default function LegalPage() {
               <h3>4.1 Réservation</h3>
               <p>
                 Les réservations s’effectuent via le site internet
-                https://www.serre-chevalier-parapente.fr/. L’acheteur sélectionne la
-                prestation souhaitée et valide sa commande après avoir pris
-                connaissance des présentes CGV.
+                https://www.serre-chevalier-parapente.fr/. L’acheteur
+                sélectionne la prestation souhaitée et valide sa commande après
+                avoir pris connaissance des présentes CGV.
               </p>
               <h3>4.2 Confirmation de commande</h3>
               <p>
@@ -203,11 +203,11 @@ export default function LegalPage() {
       </section>
       <section className="mx-4 my-24 lg:mx-36 xl:mx-48 lg:my-48" id="contact">
         <Image
-          src="/logo/new/scp-logo-line-slate_800_without_bg.svg"
-          alt="Logo Serre Chevalier Parapente"
+          src="/logo/new/scp-logo-full_text-dark_icon-blue.svg"
+          alt="Logo Serre Chevalier Parapente - Stage de Parapente"
           width={214}
           height={214}
-          className="block w-24 h-24 mx-auto"
+          className="block py-8 mx-auto"
         />
         <p className="font-bold text-2xl text-slate-900 text-center mt-8">
           Pour toute question relative aux présentes CGV, vous pouvez contacter

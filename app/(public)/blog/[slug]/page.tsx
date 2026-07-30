@@ -155,11 +155,11 @@ const PostPage = async ({ params }: PostPageProps) => {
               id="contact"
             >
               <Image
-                src="/logo/new/scp-logo-line-slate_800_without_bg.svg"
-                alt="serreche-parapente-team"
+                src="/logo/new/scp-logo-full_text-dark_icon-blue.svg"
+                alt="Logo Serre Chevalier Parapente - Stage de Parapente"
                 width={214}
                 height={214}
-                className="block w-24 h-24 mx-auto"
+                className="block py-8 mx-auto"
               />
               <p className="font-bold text-2xl text-slate-900 text-center mt-8">
                 {post.CtaText}

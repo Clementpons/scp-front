@@ -1,7 +1,8 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { BaptemeCalendar, ALL_CATEGORY_IDS, type Bapteme } from "@/components/booking/BaptemeCalendar";
+import { type Bapteme } from "@/components/booking/BaptemeCalendar";
+import { BaptemeWeekCalendar } from "@/components/booking/BaptemeWeekCalendar";
 import { useBaptemePrices } from "@/hooks/useBaptemePrices";
 import { Card, CardContent } from "@/components/ui/card";
 import { CalendarDays } from "lucide-react";
@@ -33,13 +34,10 @@ export function BaptemeCalendarSection() {
       </div>
       <Card className="shadow-sm">
         <CardContent className="p-3 sm:p-5">
-          <BaptemeCalendar
-            selectedCategories={ALL_CATEGORY_IDS}
+          <BaptemeWeekCalendar
             onSlotSelect={handleSlotSelect}
             selectedSlot={null}
-            onBaptemesAccumulated={() => {}}
             getBaptemePrice={getBaptemePrice}
-            selectLabel="Réserver ce créneau"
           />
         </CardContent>
       </Card>

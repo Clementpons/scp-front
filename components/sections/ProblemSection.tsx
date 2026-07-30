@@ -9,11 +9,11 @@ export default function ProblemSection() {
   return (
     <section className="mx-4 my-24 lg:mx-36 xl:mx-48 lg:my-48" id="contact">
       <Image
-        src="/logo/new/scp-logo-line-slate_800_without_bg.svg"
-        alt="Logo Serre chevalier Parapente"
+        src="/logo/new/scp-logo-full_text-dark_icon-blue.svg"
+        alt="Logo Serre Chevalier Parapente - Stage de Parapente"
         width={214}
         height={214}
-        className="block w-24 h-24 mx-auto"
+        className="block py-8 mx-auto"
       />
       <p className="font-bold text-2xl text-slate-900 text-center mt-8">
         Vous rencontrez un problème lors de la réservation ?
@@ -26,7 +26,8 @@ export default function ProblemSection() {
         <Link
           href={"mailto:clementpons5@gmail.com"}
           title="Contacter Serre Chevalier Parapente par mail"
-          className="block">
+          className="block"
+        >
           <Button variant={"default"} size={"lg"} className="w-full lg:w-auto">
             <MailIcon size={16} className="mr-2" />
             Je vous contacte par mail
@@ -35,7 +36,8 @@ export default function ProblemSection() {
         <Link
           href={"tel:0645913595"}
           title="Contacter Serre Chevalier Parapente par téléphone"
-          className="block">
+          className="block"
+        >
           <Button variant={"outline"} size={"lg"} className="w-full lg:w-auto">
             <PhoneCallIcon size={16} className="mr-2" />
             Appelez-nous !

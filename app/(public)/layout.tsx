@@ -40,26 +40,52 @@ export default function PublicLayout({
   return (
     <div className="relative">
       <header className="relative">
+        {/* Barre fixe qui s'affiche dès le premier scroll */}
+        <div
+          aria-hidden
+          className={`fixed top-0 left-0 w-full h-14 md:h-16 bg-white/80 backdrop-blur-sm shadow-sm z-[65] transition-transform duration-300 ${
+            isScrolled ? "translate-y-0" : "-translate-y-full"
+          }`}
+        />
         <Link
           href={"/"}
           title="Page d'accueil de l'école Serre Chevalier Parapente"
-          className={`w-12 md:w-16 lg:w-24 h-12 md:h-16 lg:h-24 z-[70] transition-all duration-300 rounded-xl
-        ${isScrolled ? "fixed left-4 top-4" : "fixed left-4 top-[6vh]"}
+          className={`z-[70] transition-all duration-300 rounded-xl fixed left-4
+        ${isScrolled ? "top-2 w-52 h-12" : "top-[6vh] w-12 md:w-16 lg:w-52 h-16"}
         `}
         >
+          {/* Logo blanc — flottant sur le hero (avant scroll) */}
           <Image
-            src={"/logo/new/scp-logo-icon-slate_800.svg"}
+            src={"/logo/new/scp-logo-full_text-white_icon-white.svg"}
             width={70}
             height={70}
             alt="Logo Parapente à Serre Chevalier"
-            className="w-full"
+            className={`absolute inset-0 w-full h-full transition-opacity duration-300 ${isScrolled ? "opacity-0" : "opacity-100"}`}
+            priority
+          />
+          {/* Logo slate — dans la barre fixe (après scroll) */}
+          <Image
+            src={"/logo/new/scp-logo-full_text-dark_icon-blue.svg"}
+            width={70}
+            height={70}
+            alt=""
+            aria-hidden
+            className={`absolute inset-0 w-full h-full transition-opacity duration-300 ${isScrolled ? "opacity-100" : "opacity-0"}`}
             priority
           />
         </Link>
         {/* Panier + Menu */}
         <div
-          className={`z-[70] fixed flex items-center gap-1 transition-all duration-300 ${isScrolled ? "right-3 top-3" : "right-4 top-[6vh]"}`}
+          className={`z-[70] fixed flex items-center gap-1 transition-all duration-300 ${isScrolled ? "right-3 top-0 h-14 md:h-16" : "right-4 top-[6vh] h-16"}`}
         >
+          <Button
+            variant={"outline"}
+            className="rounded-full h-9 px-3 md:px-4 text-xs md:text-sm"
+            title="Réserver un vol biplace"
+            asChild
+          >
+            <Link href="/bi-places">Vols bi-places</Link>
+          </Button>
           <CartDropdown />
 
         <DropdownMenu open={isMenuOpened} onOpenChange={setIsMenuOpened}>
@@ -137,7 +163,7 @@ export default function PublicLayout({
         <div className="md:flex gap-4 text-slate-50 items-center">
           <div className="flex md:flex-col items-center gap-4 justify-center">
             <Image
-              src={"/logo/new/scp-logo-icon-white.svg"}
+              src={"/logo/new/scp-logo-line-white_without_bg.svg"}
               width={70}
               height={70}
               alt="Logo Parapente à Serre Chevalier"

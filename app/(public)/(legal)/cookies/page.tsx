@@ -28,11 +28,11 @@ export default function LegalPage() {
         <div className="mx-4 lg:mx-64 mb-16 -translate-y-[20vh]">
           <div className="p-4 md:p-8 rounded-lg  bg-white shadow-lg max-w-[750px] mx-auto -mb-[20vh] prose">
             <Image
-              src="/logo/new/scp-logo-line-slate_800_without_bg.svg"
+              src="/logo/new/scp-logo-full_text-dark_icon-blue.svg"
               alt="Logo Serre Chevalier Parapente - Stage de Parapente"
               width={214}
               height={214}
-              className="block w-24 h-24 mx-auto"
+              className="block py-8 mx-auto"
             />
             <h1 className="my-8 text-center text-balance">
               POLITIQUE DE COOKIES
@@ -45,8 +45,8 @@ export default function LegalPage() {
               <p>
                 La présente politique de cookies explique comment Serre
                 Chevalier Parapente utilise des cookies et autres traçeurs sur
-                le site https://www.serre-chevalier-parapente.fr/. En naviguant sur le
-                site, l’utilisateur accepte l’utilisation des cookies
+                le site https://www.serre-chevalier-parapente.fr/. En naviguant
+                sur le site, l’utilisateur accepte l’utilisation des cookies
                 conformément à cette politique, sauf s’il a modifié ses
                 préférences dans les paramètres de son navigateur.
               </p>
@@ -63,52 +63,68 @@ export default function LegalPage() {
 
               <h2>3. TYPES DE COOKIES UTILISÉS</h2>
               <p>
-                Sur le site https://www.serre-chevalier-parapente.fr/, différents types
-                de cookies peuvent être utilisés :
+                Sur le site https://www.serre-chevalier-parapente.fr/,
+                différents types de cookies peuvent être utilisés :
               </p>
               <h3>3.1 Cookies nécessaires au fonctionnement du site</h3>
               <p>
-                Ces cookies sont essentiels pour garantir le bon fonctionnement du site et permettre l’accès aux fonctionnalités principales. Ils ne peuvent pas être désactivés.
+                Ces cookies sont essentiels pour garantir le bon fonctionnement
+                du site et permettre l’accès aux fonctionnalités principales.
+                Ils ne peuvent pas être désactivés.
               </p>
               <h3>3.2 Cookies analytiques et de performance</h3>
               <p>
-                Ces cookies permettent de mesurer l’audience et d’analyser la navigation des utilisateurs afin d’améliorer l’expérience sur le site. Ils sont généralement placés par des outils tiers.
+                Ces cookies permettent de mesurer l’audience et d’analyser la
+                navigation des utilisateurs afin d’améliorer l’expérience sur le
+                site. Ils sont généralement placés par des outils tiers.
               </p>
               <h3>3.3 Cookies de personnalisation</h3>
               <p>
-                Si le site propose des options de personnalisation, ces cookies permettent d’adapter le contenu et l’affichage aux préférences de l’utilisateur.
+                Si le site propose des options de personnalisation, ces cookies
+                permettent d’adapter le contenu et l’affichage aux préférences
+                de l’utilisateur.
               </p>
               <h3>3.4 Cookies tiers (Stripe, autres outils intégrés)</h3>
               <p>
-                Certains services tiers utilisés sur le site peuvent déposer leurs propres cookies pour assurer leur bon fonctionnement. Il s’agit notamment de :
+                Certains services tiers utilisés sur le site peuvent déposer
+                leurs propres cookies pour assurer leur bon fonctionnement. Il
+                s’agit notamment de :
               </p>
               <ul>
                 <li>
-                  Stripe : Utilisé pour la gestion des paiements et la prévention de la fraude.
+                  Stripe : Utilisé pour la gestion des paiements et la
+                  prévention de la fraude.
                 </li>
               </ul>
 
               <h2>4. GESTION DES COOKIES</h2>
-              <p>L’utilisateur peut gérer ses préférences de cookies de plusieurs manières :</p>
+              <p>
+                L’utilisateur peut gérer ses préférences de cookies de plusieurs
+                manières :
+              </p>
               <ul>
                 <li>
-                  Via les paramètres du navigateur : Il peut configurer son navigateur (Chrome, Firefox, Safari, Edge, etc.) pour bloquer ou supprimer certains cookies.
+                  Via les paramètres du navigateur : Il peut configurer son
+                  navigateur (Chrome, Firefox, Safari, Edge, etc.) pour bloquer
+                  ou supprimer certains cookies.
                 </li>
                 <li>
-                  Via le bandeau de consentement affiché lors de la première visite : Un bandeau de gestion des cookies permet à l’utilisateur d’accepter ou de refuser certains types de cookies.
+                  Via le bandeau de consentement affiché lors de la première
+                  visite : Un bandeau de gestion des cookies permet à
+                  l’utilisateur d’accepter ou de refuser certains types de
+                  cookies.
                 </li>
               </ul>
 
               <h2>5. DURÉE DE CONSERVATION DES COOKIES</h2>
-              <p>
-                La durée de stockage des cookies varie selon leur nature :
-              </p>
+              <p>La durée de stockage des cookies varie selon leur nature :</p>
               <ul>
                 <li>
                   Cookies de session : Supprimés à la fermeture du navigateur.
                 </li>
                 <li>
-                  Cookies persistants : Stockés pour une durée maximale de 5 ans selon les réglementations en vigueur.
+                  Cookies persistants : Stockés pour une durée maximale de 5 ans
+                  selon les réglementations en vigueur.
                 </li>
               </ul>
 
@@ -128,16 +144,15 @@ export default function LegalPage() {
       </section>
       <section className="mx-4 my-24 lg:mx-36 xl:mx-48 lg:my-48" id="contact">
         <Image
-          src="/logo/new/scp-logo-line-slate_800_without_bg.svg"
-          alt="Logo Serre Chevalier Parapente"
+          src="/logo/new/scp-logo-full_text-dark_icon-blue.svg"
+          alt="Logo Serre Chevalier Parapente - Stage de Parapente"
           width={214}
           height={214}
-          className="block w-24 h-24 mx-auto"
+          className="block py-8 mx-auto"
         />
         <p className="font-bold text-2xl text-slate-900 text-center mt-8">
-          Pour toute question relative à la présente politique de
-          cookies, vous pouvez contacter Serre Chevalier Parapente à
-          l’adresse suivante :
+          Pour toute question relative à la présente politique de cookies, vous
+          pouvez contacter Serre Chevalier Parapente à l’adresse suivante :
         </p>
         <div className="md:flex md:items-center md:gap-8 mt-8 md:justify-center space-y-4 md:space-y-0">
           <Link

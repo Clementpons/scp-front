@@ -28,11 +28,11 @@ export default function LegalPage() {
         <div className="mx-4 lg:mx-64 mb-16 -translate-y-[20vh]">
           <div className="p-4 md:p-8 rounded-lg  bg-white shadow-lg max-w-[750px] mx-auto -mb-[20vh] prose">
             <Image
-              src="/logo/new/scp-logo-line-slate_800_without_bg.svg"
+              src="/logo/new/scp-logo-full_text-dark_icon-blue.svg"
               alt="Logo Serre Chevalier Parapente - Stage de Parapente"
               width={214}
               height={214}
-              className="block w-24 h-24 mx-auto"
+              className="block py-8 mx-auto"
             />
             <h1 className="my-8 text-center text-balance">
               POLITIQUE DE CONFIDENTIALITÉ
@@ -44,12 +44,13 @@ export default function LegalPage() {
               <h2>1. PRÉAMBULE</h2>
               <p>
                 La présente politique de confidentialité a pour but d’informer
-                les utilisateurs du site https://www.serre-chevalier-parapente.fr/ sur
-                la collecte, l’utilisation et la protection de leurs données
-                personnelles. Serre Chevalier Parapente s’engage à traiter les
-                données personnelles conformément aux réglementations en
-                vigueur, notamment le Règlement Général sur la Protection des
-                Données (RGPD) et la loi Informatique et Libertés.
+                les utilisateurs du site
+                https://www.serre-chevalier-parapente.fr/ sur la collecte,
+                l’utilisation et la protection de leurs données personnelles.
+                Serre Chevalier Parapente s’engage à traiter les données
+                personnelles conformément aux réglementations en vigueur,
+                notamment le Règlement Général sur la Protection des Données
+                (RGPD) et la loi Informatique et Libertés.
               </p>
 
               <h2>2. RESPONSABLE DU TRAITEMENT</h2>
@@ -184,45 +185,49 @@ export default function LegalPage() {
                 </li>
               </ul>
               <p>
-                Pour exercer ces droits, l’utilisateur peut contacter clementpons5@gmail.com en précisant son identité et la nature de la demande.
+                Pour exercer ces droits, l’utilisateur peut contacter
+                clementpons5@gmail.com en précisant son identité et la nature de
+                la demande.
               </p>
 
               <h2>10. COOKIES ET TRACEURS</h2>
               <p>
-                Lors de la navigation sur le site, des cookies peuvent être déposés sur l’appareil de l’utilisateur. Ces cookies permettent de :
+                Lors de la navigation sur le site, des cookies peuvent être
+                déposés sur l’appareil de l’utilisateur. Ces cookies permettent
+                de :
               </p>
               <ul>
                 <li>
-                  Mesurer l’audience et analyser la navigation (Google Analytics, Google Ads)
+                  Mesurer l’audience et analyser la navigation (Google
+                  Analytics, Google Ads)
                 </li>
                 <li>
-                  Garantir le bon fonctionnement du site (Cookies techniques nécessaires)
+                  Garantir le bon fonctionnement du site (Cookies techniques
+                  nécessaires)
                 </li>
               </ul>
               <p>
-                L’utilisateur peut gérer ses préférences en matière de cookies via Politique de cookies.
+                L’utilisateur peut gérer ses préférences en matière de cookies
+                via Politique de cookies.
               </p>
 
-              <h2>
-                11. MODIFICATION DE LA POLITIQUE DE CONFIDENTIALITÉ
-              </h2>
+              <h2>11. MODIFICATION DE LA POLITIQUE DE CONFIDENTIALITÉ</h2>
               <p>
-                Serre Chevalier Parapente se réserve le droit de modifier la présente politique à tout moment pour assurer sa conformité aux évolutions légales et aux bonnes pratiques. Les utilisateurs seront informés en cas de modifications majeures.
+                Serre Chevalier Parapente se réserve le droit de modifier la
+                présente politique à tout moment pour assurer sa conformité aux
+                évolutions légales et aux bonnes pratiques. Les utilisateurs
+                seront informés en cas de modifications majeures.
               </p>
 
-              <h2>
-                12. CONTACT
-              </h2>
+              <h2>12. CONTACT</h2>
               <p>
-                Pour toute question relative à cette politique de confidentialité ou pour exercer ses droits, l’utilisateur peut contacter :
+                Pour toute question relative à cette politique de
+                confidentialité ou pour exercer ses droits, l’utilisateur peut
+                contacter :
               </p>
               <ul>
-                <li>
-                  Email : clementpons5@gmail.com
-                </li>
-                <li>
-                  Adresse postale : 68 CHEM DE FORTVILLE 05100 BRIANCON
-                </li>
+                <li>Email : clementpons5@gmail.com</li>
+                <li>Adresse postale : 68 CHEM DE FORTVILLE 05100 BRIANCON</li>
               </ul>
             </div>
           </div>
@@ -237,8 +242,9 @@ export default function LegalPage() {
           className="block w-24 h-24 mx-auto"
         />
         <p className="font-bold text-2xl text-slate-900 text-center mt-8">
-          Pour toute question relative à la présente politique de confidentialité, vous pouvez contacter
-          Serre Chevalier Parapente à l’adresse suivante :
+          Pour toute question relative à la présente politique de
+          confidentialité, vous pouvez contacter Serre Chevalier Parapente à
+          l’adresse suivante :
         </p>
         <div className="md:flex md:items-center md:gap-8 mt-8 md:justify-center space-y-4 md:space-y-0">
           <Link
