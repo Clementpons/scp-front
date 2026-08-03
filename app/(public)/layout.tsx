@@ -51,7 +51,7 @@ export default function PublicLayout({
           href={"/"}
           title="Page d'accueil de l'école Serre Chevalier Parapente"
           className={`z-[70] transition-all duration-300 rounded-xl fixed left-4
-        ${isScrolled ? "top-2 w-52 h-12" : "top-[6vh] w-12 md:w-16 lg:w-52 h-16"}
+        ${isScrolled ? "top-[0.5vh] md:top-[1.3vh] lg:top-[0.7vh] w-32 md:w-48 lg:w-52 h-12" : "top-[6vh] w-32 md:w-48 lg:w-52 h-16"}
         `}
         >
           {/* Logo blanc — flottant sur le hero (avant scroll) */}
@@ -65,7 +65,7 @@ export default function PublicLayout({
           />
           {/* Logo slate — dans la barre fixe (après scroll) */}
           <Image
-            src={"/logo/new/scp-logo-full_text-dark_icon-blue.svg"}
+            src={"/logo/new/scp-logo-full_text-dark_icon-dark.svg"}
             width={70}
             height={70}
             alt=""
