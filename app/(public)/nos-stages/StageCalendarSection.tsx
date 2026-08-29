@@ -95,6 +95,22 @@ const TYPE_CONFIG: Record<string, {
     textClass: "text-blue-900",
     dotClass: "bg-blue-800",
   },
+  RANDOVOL: {
+    bgBar: "bg-teal-500",
+    bgBarHex: "#14b8a6",
+    bgLight: "bg-teal-50",
+    label: "Rando-Vol",
+    textClass: "text-teal-700",
+    dotClass: "bg-teal-500",
+  },
+  CROSS: {
+    bgBar: "bg-amber-500",
+    bgBarHex: "#f59e0b",
+    bgLight: "bg-amber-50",
+    label: "Cross",
+    textClass: "text-amber-700",
+    dotClass: "bg-amber-500",
+  },
   DOUBLE: {
     bgBar: "bg-violet-500",
     bgBarHex: "#8b5cf6",
@@ -160,7 +176,7 @@ function StageCalendarWidget({ onSlotSelect }: { onSlotSelect: (stage: Stage) =>
     const { from, to } = monthRange(year, month);
 
     fetch(
-      `${process.env.NEXT_PUBLIC_BACKOFFICE_URL}/api/stages?from=${from}&to=${to}&types=INITIATION,PROGRESSION,AUTONOMIE,DOUBLE`,
+      `${process.env.NEXT_PUBLIC_BACKOFFICE_URL}/api/stages?from=${from}&to=${to}&types=INITIATION,PROGRESSION,AUTONOMIE,RANDOVOL,CROSS,DOUBLE`,
       { signal: ctrl.signal, headers: { "x-api-key": process.env.NEXT_PUBLIC_API_KEY || "" } },
     )
       .then((r) => r.json())

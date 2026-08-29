@@ -4,6 +4,8 @@ const DEFAULT_PRICES: Record<string, number> = {
   INITIATION: 700,
   PROGRESSION: 700,
   AUTONOMIE: 1200,
+  RANDOVOL: 700,
+  CROSS: 700,
 };
 
 export function useStagePrices() {

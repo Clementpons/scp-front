@@ -81,6 +81,8 @@ const STAGE_LABELS: Record<string, string> = {
   INITIATION: "Stage Initiation",
   PROGRESSION: "Stage Progression",
   AUTONOMIE: "Stage Autonomie",
+  RANDOVOL: "Stage Rando-Vol",
+  CROSS: "Stage Cross",
   DOUBLE: "Stage Double",
 };
 
@@ -110,6 +112,8 @@ const STAGE_TYPE_CONFIG: Record<string, { bgBar: string; bgBarHex: string; label
   INITIATION: { bgBar: "bg-sky-400",   bgBarHex: "#38bdf8", label: "Initiation" },
   PROGRESSION: { bgBar: "bg-blue-500", bgBarHex: "#3b82f6", label: "Progression" },
   AUTONOMIE:   { bgBar: "bg-blue-800", bgBarHex: "#1e40af", label: "Autonomie" },
+  RANDOVOL:    { bgBar: "bg-teal-500",  bgBarHex: "#14b8a6", label: "Rando-Vol" },
+  CROSS:       { bgBar: "bg-amber-500", bgBarHex: "#f59e0b", label: "Cross" },
   DOUBLE:      { bgBar: "bg-violet-500", bgBarHex: "#8b5cf6", label: "Initiation + Progression" },
 };
 

@@ -124,6 +124,24 @@ const STAGE_CATEGORIES: StageCategory[] = [
     description:
       "Découvrez le parapente et devenez autonome durant un seul et même stage.",
   },
+  {
+    id: "RANDOVOL",
+    name: "Stage Rando-Vol",
+    price: 0,
+    duration: 5,
+    durationDays: 7,
+    description:
+      "Marchez vers les sommets et redescendez en vol, en autonomie complète.",
+  },
+  {
+    id: "CROSS",
+    name: "Stage Cross",
+    price: 0,
+    duration: 5,
+    durationDays: 7,
+    description:
+      "Apprenez à enchaîner les thermiques et à voler sur la distance.",
+  },
 ];
 
 const ALL_STAGE_IDS = STAGE_CATEGORIES.map((c) => c.id);
@@ -187,6 +205,26 @@ const TYPE_CONFIG: Record<
     borderClass: "border-blue-800",
     textClass: "text-blue-900",
     dotClass: "bg-blue-800",
+  },
+  RANDOVOL: {
+    bgBar: "bg-teal-500",
+    bgBarHex: "#14b8a6",
+    bgLight: "bg-teal-50",
+    badgeClass: "bg-teal-100 text-teal-800 border-teal-200",
+    label: "Rando-Vol",
+    borderClass: "border-teal-500",
+    textClass: "text-teal-700",
+    dotClass: "bg-teal-500",
+  },
+  CROSS: {
+    bgBar: "bg-amber-500",
+    bgBarHex: "#f59e0b",
+    bgLight: "bg-amber-50",
+    badgeClass: "bg-amber-100 text-amber-800 border-amber-200",
+    label: "Cross",
+    borderClass: "border-amber-500",
+    textClass: "text-amber-700",
+    dotClass: "bg-amber-500",
   },
   DOUBLE: {
     bgBar: "bg-violet-500",
@@ -1337,6 +1375,8 @@ function StageReservationPageContent() {
       INITIATION: "Stage Initiation",
       PROGRESSION: "Stage Progression",
       AUTONOMIE: "Stage Autonomie",
+      RANDOVOL: "Stage Rando-Vol",
+      CROSS: "Stage Cross",
     })[cat] ?? cat;
 
   const effectiveCategory = selectedSlot

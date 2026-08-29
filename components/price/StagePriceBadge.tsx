@@ -3,7 +3,12 @@
 import { useMinPrice } from "@/hooks/useMinPrice";
 
 interface StagePriceBadgeProps {
-  stageType: "INITIATION" | "PROGRESSION" | "AUTONOMIE";
+  stageType:
+    | "INITIATION"
+    | "PROGRESSION"
+    | "AUTONOMIE"
+    | "RANDOVOL"
+    | "CROSS";
 }
 
 export function StagePriceBadge({ stageType }: StagePriceBadgeProps) {

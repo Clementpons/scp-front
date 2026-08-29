@@ -6,7 +6,7 @@ import { useRouter } from 'next/navigation';
 
 interface ReserveButtonProps {
   type: 'stage' | 'bapteme';
-  stageType?: 'INITIATION' | 'PROGRESSION' | 'AUTONOMIE';
+  stageType?: 'INITIATION' | 'PROGRESSION' | 'AUTONOMIE' | 'RANDOVOL' | 'CROSS';
   baptemeCategory?: 'AVENTURE' | 'DUREE' | 'LONGUE_DUREE' | 'ENFANT' | 'HIVER';
   className?: string;
 }

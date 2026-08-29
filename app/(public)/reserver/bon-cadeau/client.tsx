@@ -48,6 +48,22 @@ const GIFT_VOUCHER_PRODUCTS = [
     description: 'Volez en toute liberté sous la supervision de moniteurs.',
     duration: '5 jours',
   },
+  {
+    id: 'stage-randovol',
+    productType: 'STAGE',
+    category: 'RANDOVOL',
+    label: 'Stage Rando-Vol',
+    description: 'Marchez vers les sommets et redescendez en vol.',
+    duration: '5 jours',
+  },
+  {
+    id: 'stage-cross',
+    productType: 'STAGE',
+    category: 'CROSS',
+    label: 'Stage Cross',
+    description: 'Enchaînez les thermiques et volez sur la distance.',
+    duration: '5 jours',
+  },
   // BAPTEMES
   {
     id: 'bapteme-aventure',

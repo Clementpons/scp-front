@@ -82,6 +82,20 @@ const TYPE_CONFIG: Record<
     borderClass: "border-blue-800",
     label: "Autonomie",
   },
+  RANDOVOL: {
+    bgBar: "bg-teal-500",
+    bgBarHex: "#14b8a6",
+    bgLight: "bg-teal-50",
+    borderClass: "border-teal-500",
+    label: "Rando-Vol",
+  },
+  CROSS: {
+    bgBar: "bg-amber-500",
+    bgBarHex: "#f59e0b",
+    bgLight: "bg-amber-50",
+    borderClass: "border-amber-500",
+    label: "Cross",
+  },
   DOUBLE: {
     bgBar: "bg-violet-500",
     bgBarHex: "#8b5cf6",
@@ -114,7 +128,12 @@ function getDOWSun(d: Date) { return d.getDay(); }
 
 // ─── Component ────────────────────────────────────────────────────────────────
 
-export type StageType = "INITIATION" | "PROGRESSION" | "AUTONOMIE";
+export type StageType =
+  | "INITIATION"
+  | "PROGRESSION"
+  | "AUTONOMIE"
+  | "RANDOVOL"
+  | "CROSS";
 
 export default function StageCalendarWidget({ stageType }: { stageType: StageType }) {
   const router = useRouter();
@@ -135,7 +154,7 @@ export default function StageCalendarWidget({ stageType }: { stageType: StageTyp
   const isAutoNavigating = useRef(true);
 
   const apiTypes = useMemo(() => {
-    const t = [stageType];
+    const t: string[] = [stageType];
     if (stageType === "INITIATION" || stageType === "PROGRESSION") t.push("DOUBLE");
     return t;
   }, [stageType]);
