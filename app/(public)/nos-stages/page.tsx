@@ -245,6 +245,111 @@ export default function NosStagesPage() {
           </div>
         </div>
       </section>
+      <section className="px-4 py-24 lg:px-36 xl:px-48 lg:py-16 lg:flex lg:flex-row-reverse lg:gap-12 lg:items-center ">
+        <div
+          className="inline-block lg:w-1/2 h-[40vh] xl:h-[50vh] rounded-lg overflow-hidden"
+        >
+          <Image
+            src="/stages/stage-cross.jpeg"
+            alt={`Photo d&apos;un vol en parapente à Serre Chevalier`}
+            width={1920}
+            height={1080}
+            className="h-full w-full object-cover dark:brightness-[0.2] dark:grayscale"
+          />
+        </div>
+        <div className="mt-8 lg:w-1/2 lg:mt-0">
+          <div className="flex flex-col items-start">
+            <div
+              className="inline-block"
+            >
+              <h2 className="font-bold text-2xl text-slate-800">
+                Stage Cross Parapente
+              </h2>
+            </div>
+            <div className="flex flex-wrap gap-2 mt-4">
+              <p className="text-slate-500 text-sm bg-slate-200 border border-slate-500 rounded-full inline-block py-1 px-4">
+                5 jours de stage
+              </p>
+              <p className="text-slate-500 text-sm bg-slate-200 border border-slate-500 rounded-full inline-block py-1 px-4">
+                7 pilotes maximum
+              </p>
+              <p className="text-blue-500 text-sm bg-blue-200 border border-blue-500 rounded-full inline-block py-1 px-4">
+                Niveau Bleu requis
+              </p>
+            </div>
+          </div>
+          <p className="text-slate-800 mt-4">
+            Vous êtes déjà autonome et à l&apos;aise en thermique ? Passez à l&apos;étape supérieure avec notre stage Cross ! Apprenez à construire votre vol, optimiser les ascendances, choisir vos transitions et adapter votre itinéraire aux conditions du jour. Analyse météo et aérologique, préparation des vols, stratégie, gestion de la sécurité et débriefing font partie intégrante de la semaine.
+          </p>
+          <p className="text-slate-800 mt-4">
+            L&apos;objectif ? <span className="font-bold">Gagner en autonomie et en confiance pour partir en cross</span>, des premiers kilomètres aux belles aventures à travers les vallées et sommets des Hautes-Alpes.
+          </p>
+          <div className="mt-4">
+            <MinPriceDisplay type="STAGE" subType="CROSS" />
+          </div>
+          <div className="flex flex-col md:flex-row gap-4 mt-4">
+            <ReserveButton
+              type="stage"
+              stageType="CROSS"
+              className="gap-2"
+            />
+          </div>
+        </div>
+      </section>
+      <section className="px-4 py-24 lg:px-36 xl:px-48 lg:py-16 lg:flex lg:gap-12 lg:items-center ">
+        <div
+          className="inline-block lg:w-1/2 h-[40vh] xl:h-[50vh] rounded-lg overflow-hidden"
+        >
+          <Image
+            src="/stages/stage-randovol.jpeg"
+            alt={`Photo d&apos;un vol en parapente à Serre Chevalier`}
+            width={1920}
+            height={1080}
+            className="h-full w-full object-cover dark:brightness-[0.2] dark:grayscale"
+          />
+        </div>
+        <div className="mt-8 lg:w-1/2 lg:mt-0">
+          <div className="flex flex-col items-start">
+            <div
+              className="inline-block"
+            >
+              <h2 className="font-bold text-2xl text-slate-800">
+                Stage Vol Rando Parapente
+              </h2>
+            </div>
+            <div className="flex flex-wrap gap-2 mt-4">
+              <p className="text-slate-500 text-sm bg-slate-200 border border-slate-500 rounded-full inline-block py-1 px-4">
+                5 jours de stage
+              </p>
+              <p className="text-slate-500 text-sm bg-slate-200 border border-slate-500 rounded-full inline-block py-1 px-4">
+                7 pilotes maximum
+              </p>
+              <p className="text-emerald-500 text-sm bg-emerald-200 border border-emerald-500 rounded-full inline-block py-1 px-4">
+                Niveau Vert requis
+              </p>
+            </div>
+          </div>
+          <p className="text-slate-800 mt-4">
+            Envie de mettre votre voile dans le sac et de partir explorer la montagne autrement ? Notre stage Vol Rando vous apprend à préparer et réaliser vos propres aventures : choix de l&apos;itinéraire, lecture du terrain, météo et aérologie, gestion de l&apos;effort, choix d&apos;un décollage naturel et prise de décision en montagne.
+          </p>
+          <p className="text-slate-800 mt-4">
+            Encadré par <span className="font-bold">deux moniteurs de parapente, dont un Accompagnateur en Moyenne Montagne (AMM)</span>, le stage vous emmène à la découverte des plus beaux terrains de jeu du Briançonnais et des massifs environnants. Selon les conditions, <span className="font-bold">une aventure avec bivouac en montagne pourra être organisée.</span>
+          </p>
+          <p className="text-slate-800 mt-4">
+            L&apos;objectif ? <span className="font-bold">Devenir plus autonome pour imaginer, préparer et réaliser vos propres vols-randos en toute sécurité.</span>
+          </p>
+          <div className="mt-4">
+            <MinPriceDisplay type="STAGE" subType="RANDOVOL" />
+          </div>
+          <div className="flex flex-col md:flex-row gap-4 mt-4">
+            <ReserveButton
+              type="stage"
+              stageType="RANDOVOL"
+              className="gap-2"
+            />
+          </div>
+        </div>
+      </section>
       {/* SECTION CALENDRIER CRÉNEAUX */}
       <StageCalendarSection />
       {/* NAVETTE + AVANTAGES */}
